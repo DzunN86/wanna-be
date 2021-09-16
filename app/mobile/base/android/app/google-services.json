@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "988551056151",
+    "project_id": "mitradiagnostic-94544",
+    "storage_bucket": "mitradiagnostic-94544.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988551056151:android:597ca73e8c94d6e7788552",
+        "android_client_info": {
+          "package_name": "com.andromedia.mitradiagnostic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988551056151-u0kvfhv5ehgapbjqboe6ncfdar3amipv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgbHRRz9q7Cs2PQBAYtPIJB4cV9z_m2Lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988551056151-u0kvfhv5ehgapbjqboe6ncfdar3amipv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988551056151:android:e6bdfc4ba9de8790788552",
+        "android_client_info": {
+          "package_name": "com.andromedia.base"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988551056151-u0kvfhv5ehgapbjqboe6ncfdar3amipv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgbHRRz9q7Cs2PQBAYtPIJB4cV9z_m2Lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988551056151-u0kvfhv5ehgapbjqboe6ncfdar3amipv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988551056151:android:544a9ff4f9bd129e788552",
+        "android_client_info": {
+          "package_name": "com.andromedia.mitradiagnostic.doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988551056151-u0kvfhv5ehgapbjqboe6ncfdar3amipv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgbHRRz9q7Cs2PQBAYtPIJB4cV9z_m2Lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988551056151-u0kvfhv5ehgapbjqboe6ncfdar3amipv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

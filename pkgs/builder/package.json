@@ -1,0 +1,22 @@
+{
+  "name": "builder",
+  "version": "1.0.0",
+  "private": true,
+  "types": "./src/index.ts",
+  "scripts": {},
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "chokidar": "^3.5.1",
+    "esbuild": "0.12.16",
+    "fs-extra": "^9.1.0",
+    "lodash.pad": "^4.5.1",
+    "main": "1.0.0",
+    "shinobi-worker": "^0.0.16",
+    "tiny-worker": "^2.3.0",
+    "uniqid": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/uniqid": "^5.3.0"
+  },
+  "main": "./build/index.js"
+}

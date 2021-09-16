@@ -1,0 +1,49 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "main": ".C:\\Users\\Riz\\Desktop\\base\\pkgs\\main\\build\\index.js",
+  "author": "rizky",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./pkgs/boot/src/start.js dev",
+    "dev": "node ./pkgs/boot/src/start.js dev",
+    "prod": "node ./pkgs/boot/src/prod.js",
+    "prisma": "cd app/db && npx prisma db pull && npx prisma generate",
+    "base": "node ./base.js",
+    "figma": "node ./pkgs/figma/src/init.js",
+    "db": "npm -w=db",
+    "web": "npm -w=web-app",
+    "web.init": "npm -w=web.init",
+    "mobile": "npm -w=mobile",
+    "server": "npm -w=server",
+    "main": "npm -w=main",
+    "ui": "npm -w=ui",
+    "boot": "npm -w=boot",
+    "utils": "npm -w=utils",
+    "builder": "npm -w=builder",
+    "libs": "npm -w=libs",
+    "platform": "npm -w=platform",
+    "postinstall": "patch-package && node base clean"
+  },
+  "workspaces": [
+    "pkgs/*",
+    "app/*",
+    "pkgs/web/*"
+  ],
+  "dependencies": {
+    "@react-google-maps/api": "^2.2.0",
+    "autoprefixer": "^10.2.5",
+    "execa": "^5.0.0",
+    "fs-extra": "^9.1.0",
+    "globby": "^11.0.3",
+    "isomorphic-git": "^1.8.1",
+    "patch-package": "^6.4.7",
+    "postcss": "^8.2.8",
+    "postinstall-postinstall": "^2.1.0",
+    "prettier": "^2.2.1",
+    "tslib": "1.14.1",
+    "typescript": "^4.2.3",
+    "uuid": "^8.3.2"
+  }
+}

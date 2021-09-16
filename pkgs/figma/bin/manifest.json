@@ -1,0 +1,14 @@
+{
+  "api": "1.0.0",
+  "id": "andro-figma-base",
+  "name": "Figma Base",
+  "main": "plugin.js",
+  "ui": "ui.html",
+  "enablePrivatePluginApi": true,
+  "relaunchButtons": [
+    {
+      "command": "open",
+      "name": "Open Figma Base"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "libs",
+  "version": "1.0.0",
+  "types": "src/index.tsx",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "postinstall": "patch-package"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.25"
+  },
+  "dependencies": {
+    "lzutf8": "^0.6.0",
+    "path-to-regexp": "^6.2.0",
+    "sodium-universal": "^3.0.4"
+  },
+  "main": "./build/index.js"
+}

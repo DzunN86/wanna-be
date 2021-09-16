@@ -1,0 +1,16 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "argon2": "^0.27.1",
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "form-data": "^4.0.0",
+    "midtrans-client": "^1.2.4",
+    "mime": "^2.5.2"
+  },
+  "types": "./src/index.ts",
+  "main": "./build/index.js"
+}

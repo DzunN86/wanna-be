@@ -1,0 +1,38 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["orderByRelation", "orderByAggregateGroup", "selectRelationCount", "filterJson"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:andromedia123oke@db.plansys.co:5432/test?schema=public&pool_timeout=0"
+}
+
+model albums {
+  AlbumId  Int     @id @default(autoincrement())
+  Title    String
+  ArtistId Int
+  artists  artists @relation(fields: [ArtistId], references: [ArtistId])
+  songs    songs[]
+}
+
+model artists {
+  ArtistId   Int        @id @default(autoincrement())
+  Name       String
+  CoutriesId Int?
+  countries  countries? @relation(fields: [CoutriesId], references: [id])
+  albums     albums[]
+}
+
+model countries {
+  id      Int       @id @default(autoincrement())
+  name    String    @db.VarChar(45)
+  artists artists[]
+}
+
+model songs {
+  id       Int    @id @default(autoincrement())
+  song     String @db.VarChar(45)
+  albumsId Int
+  albums   albums @relation(fields: [albumsId], references: [AlbumId])
+}

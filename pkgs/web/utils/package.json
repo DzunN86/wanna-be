@@ -1,0 +1,19 @@
+{
+  "name": "web.utils",
+  "version": "1.0.0",
+  "types": "./src/index.tsx",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "main": "./build/index.js",
+  "scripts": {
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "date-fns": "^2.21.3",
+    "lodash.startcase": "^4.4.0",
+    "node-fetch": "^2.6.1",
+    "web.form": "1.0.0"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,26 @@
+{
+  "name": "web.list",
+  "version": "1.0.0",
+  "types": "./src/index.tsx",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "main": "./build/index.js",
+  "scripts": {
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "lodash.get": "^4.4.2",
+    "lodash.map": "^4.6.0",
+    "@fluentui/react": "^8.22.1",
+    "date-fns": "^2.19.0",
+    "jodit-react": "^1.0.74",
+    "lodash.find": "^4.6.0",
+    "lodash.set": "^4.3.2",
+    "lodash.sortby": "^4.7.0",
+    "lodash.throttle": "^4.1.1",
+    "lodash.trim": "^4.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

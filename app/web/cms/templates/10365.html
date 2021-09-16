@@ -1,0 +1,109 @@
+<>
+  <effect
+    meta={{
+      value: "",
+      onChange(e) {
+        console.log("changed", e);
+        runInAction(() => {
+          this.value = e;
+        });
+      },
+      async getDetail() {
+        const res = await db.albums.findMany();
+        console.log(res);
+      },
+    }}
+    run={async () => {
+      meta.getDetail();
+    }}
+  />
+  <>
+    <div
+      class={`flex flex-1 self-stretch flex-col items-start justify-start bg-blue-300`}
+    >
+      <div
+        class={`flex self-stretch flex-col items-start justify-center pl-5 bg-white rounded-br-3xl`}
+        style={`height: 76px; min-height: 76px; max-height: 76px;`}
+      >
+        <div class={`text-3xl font-bold leading-10 text-blue-500`}>
+          Login / Register
+        </div>
+      </div>
+      <div
+        class={`flex flex-1 self-stretch flex-col items-center justify-center`}
+      >
+        <div
+          class={`flex flex-1 self-stretch flex-col space-y-24 items-start justify-start`}
+        >
+          <div
+            class={`flex self-stretch space-x-2 items-start justify-start p-4`}
+          >
+            <img
+              style={`width: 23.33px; min-width: 23.33px; max-width: 23.33px; height: 23.33px; min-height: 23.33px; max-height: 23.33px;`}
+              src="/fimgs/4_185.x1.svg"
+            />
+            <div class={`text-lg font-medium leading-relaxed text-coolGray-50`}>
+              Masukkan nomer telepon anda untuk masuk / daftar {meta.value}
+            </div>
+          </div>
+          <div
+            class={`flex self-stretch flex-col space-y-2.5 items-start justify-start p-4`}
+          >
+            <div class={`flex self-stretch flex-col items-start justify-start`}>
+              <div class={`text-sm font-bold leading-tight text-coolGray-50`}>
+                Masukan Nomer Telepon :
+              </div>
+            </div>
+            <div class={`flex self-stretch items-start justify-start`}>
+              <m-input
+                type="select"
+                onChange={(e) => console.log(e)}
+                class={`flex items-center justify-center p-2.5 bg-blue-500 text-white`}
+                style={`height: 40px; min-height: 40px; max-height: 40px; select {
+    font-weight: 700;
+  }`}
+              >
+                {["+62", "+1"].map((item, key) => (
+                  <option
+                    key={key}
+                    value={item}
+                    class="text-sm leading-tight text-white"
+                  >
+                    {item}
+                  </option>
+                ))}
+              </m-input>
+              <div
+                class={`flex flex-1 self-stretch flex-col items-start justify-center px-2.5 bg-gray-100`}
+              >
+                <m-input
+                  type="text"
+                  value={meta.value}
+                  onChange={(e) => meta.onChange(e.target.value)}
+                  class={`flex self-stretch flex-col items-start justify-start`}
+                  style={`> input {
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }`}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class={`flex self-stretch flex-col items-start justify-start p-4`}>
+          <m-button
+            fill={true}
+            round={true}
+            raised={true}
+            large={true}
+            type="button"
+            onClick={() => console.log("clicked")}
+          >
+            <div class={`text-sm leading-tight text-white`}>Masuk / Daftar</div>
+          </m-button>
+        </div>
+      </div>
+    </div>
+  </>
+</>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <style>
+      iframe {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 100%;
+        border-width: 0;
+      }
+      #loading-img {
+        object-fit: contain;
+        object-position: center;
+        width: 60%;
+        max-width: 250px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+    This simple example uses Capacitor Core as a bundled file.
+    For large apps, we recommend using a bundler/module loader such as
+    rollup or webpack and importing Capacitor using ES2015 imports.
+  -->
+    <!-- <script src="capacitor.js"></script> -->
+    <script>
+      const baseCallback = {}
+      const loaded = function () {
+        if (!window.frame) {
+          window.frame = document.getElementById("iframe");
+          window.sendDev = function (type, data) {
+            window.frame.contentWindow.postMessage(
+              JSON.stringify({ type: type, data: data }),
+              "*"
+            );
+          };
+
+          if (!!window.frame) {
+            window.addEventListener("message", function (e) {
+              const msg = JSON.parse(e.data);
+              switch (msg.type) {
+                case "ready":
+                  document.getElementById("loading").remove();
+                  window.frame.style.display = "block";
+                  sendDev("init-plugins", {
+                    plugins: Object.keys(window.Capacitor.Plugins).map((e) => {
+                      return {
+                        name: e,
+                        props: Object.keys(window.Capacitor.Plugins[e]).map(
+                          (p) => {
+                            return {
+                              name: p,
+                              type: typeof window.Capacitor.Plugins[e][p],
+                            };
+                          }
+                        ),
+                      };
+                    }),
+                  });
+                  break;
+                case "exec":
+                  const { data } = msg;
+                  const func = data.func.split(".");
+
+                  for (let [k, v] of Object.entries(data.args)) {
+                    if (typeof v === 'string' && v.indexOf('__f:') === 0) {
+                      baseCallback[v] = function() {
+                        sendDev('call-args', {id:v, params: JSON.stringify(arguments)})
+                      }
+                      data.args[k] = baseCallback[v]
+                    }
+                  }
+
+                  const result = window.Capacitor.Plugins[func[0]][
+                    func[1]
+                  ].apply(Capacitor.Plugins[func[0]], data.args);
+
+                  if (func[0] === "BarcodeScanner") {
+                    if (func[1] === "hideBackground") {
+                      document.querySelectorAll("body > *").forEach((e) => {
+                        e.style.display = "none";
+                      });
+                    } else if (func[1] === "showBackground") {
+                      document.querySelectorAll("body > *").forEach((e) => {
+                        e.style.display = "flex";
+                      });
+                    }
+                  }
+
+                  if (result instanceof Promise) {
+                    result.then((e) => {
+                      sendDev("exec-result", {
+                        func: data.func,
+                        args: data.args,
+                        result: e,
+                      });
+                    });
+                  } else {
+                    sendDev("exec-result", {
+                      func: data.func,
+                      args: data.args,
+                      result: result,
+                    });
+                  }
+
+                  break;
+                case "exit":
+                  window.Capacitor.Plugins.App.exitApp();
+                  break;
+              }
+            });
+            sendDev("init-capacitor");
+          }
+        }
+      };
+      if (!window.frame) {
+        window.Capacitor.Plugins.App.addListener("backButton", (e) => {
+          window.sendDev("go-back");
+        });
+      }
+      // window.serverUrl = 'http://172.20.10.2:3200'
+      window.serverUrl = "http://e.plansys.co:3010";
+      const iframe = document.createElement("iframe");
+      iframe.setAttribute("src", window.serverUrl + "/m/analyst/login");
+      iframe.style.display = "none";
+      iframe.onload = loaded;
+      iframe.id = "iframe";
+      document.body.appendChild(iframe);
+    </script>
+    <div
+      id="loading"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 100%;
+      "
+    >
+      <img id="loading-img" src="loading.svg" />
+    </div>
+  </body>
+</html>

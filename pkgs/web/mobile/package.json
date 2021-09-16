@@ -1,0 +1,22 @@
+{
+  "name": "web.mobile",
+  "version": "1.0.0",
+  "types": "./src/index.tsx",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.1.5",
+    "framework7": "^6.3.3",
+    "framework7-react": "^6.3.3",
+    "html-react-parser": "^1.2.7",
+    "lodash.get": "^4.4.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-refresh": "^0.10.0",
+    "react-transition-group": "^4.4.2"
+  },
+  "main": "./build/index.js",
+  "scripts": {
+    "postinstall": "patch-package"
+  }
+}

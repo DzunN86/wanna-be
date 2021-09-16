@@ -1,0 +1,22 @@
+<div>
+  <effect
+    meta={{
+      count: 0,
+    }}
+    run={() => {}}
+  />
+  <div>Layout Web {meta.count} </div>
+  <br />
+  {getTime()}
+  <btn-primary
+    className="bg-blue-500 p-4 text-white rounded-lg"
+    onClick={() => {
+      runInAction(() => {
+        meta.count++;
+      });
+    }}
+  >
+    Add
+  </btn-primary>
+  <btn-primary>woke</btn-primary>
+</div>
