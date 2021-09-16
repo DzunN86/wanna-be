@@ -1,3 +1,1 @@
-export const getTime = () => {
-    return new Date();
-}
+export const globalVar = {}
